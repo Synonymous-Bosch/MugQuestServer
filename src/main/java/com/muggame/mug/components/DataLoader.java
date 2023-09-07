@@ -44,11 +44,11 @@ public class DataLoader implements ApplicationRunner {
         locationRepository.save(testLocation);
         Player testPlayer = new Player("Yurtle");
         playerRepository.save(testPlayer);
-        DialogueOption testDialogue = new DialogueOption( null, 3L, "Open your eyes", "You see nothing. The room is completely dark",  testLocation);
+        DialogueOption testDialogue = new DialogueOption( 3L, null, "Open your eyes", "You see nothing. The room is completely dark",  testLocation);
         dialogueOptionRepository.save(testDialogue);
         DialogueOption testDialogue2 = new DialogueOption(null, null, "Eat the sandwich", "You eat the sandwich", testLocation);
         dialogueOptionRepository.save(testDialogue2);
-        DialogueOption testDialogue3 = new DialogueOption(1L, null, "Turn on lamp", "You fumble blindly for the lamp, clumsily finding the on-switch. The light flares and pain erupts behind your eyes.", testLocation);
+        DialogueOption testDialogue3 = new DialogueOption(null, 1L, "Turn on lamp", "You fumble blindly for the lamp, clumsily finding the on-switch. The light flares and pain erupts behind your eyes.", testLocation);
         dialogueOptionRepository.save(testDialogue3);
         Item testItem = new Item("Mug", "Your mug, in all it's glory. It reads 'Allergic To Idiots'", testLocation);
         itemRepository.save(testItem);
