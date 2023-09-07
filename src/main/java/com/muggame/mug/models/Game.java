@@ -27,10 +27,10 @@ public class Game {
     public Game() {
     }
 
-    public Game(User user, Player player) {
+    public Game(User user, Player player, Location location) {
         this.user = user;
         this.player = player;
-        this.location = null;
+        this.location = location;
     }
 
     public User getUser() {

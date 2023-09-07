@@ -55,7 +55,7 @@ public class DataLoader implements ApplicationRunner {
 
 
 
-        Game testGame = new Game(testUser, testPlayer);
+        Game testGame = new Game(testUser, testPlayer, testLocation);
         gameRepository.save(testGame);
 
 //

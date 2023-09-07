@@ -1,9 +1,11 @@
 package com.muggame.mug.controllers;
 
 import com.muggame.mug.models.Game;
+import com.muggame.mug.models.Location;
 import com.muggame.mug.models.Player;
 import com.muggame.mug.models.User;
 import com.muggame.mug.repositories.GameRepository;
+import com.muggame.mug.repositories.LocationRepository;
 import com.muggame.mug.repositories.PlayerRepository;
 import com.muggame.mug.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class GameController {
     @Autowired
     PlayerRepository playerRepository;
 
+    @Autowired
+    LocationRepository locationRepository;
+
     @GetMapping(value = "/games")
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<List<Game>> getAllGames() {
@@ -44,13 +49,14 @@ public class GameController {
     public ResponseEntity<?> createGame(@RequestBody Map<String, Long> requestBody) {
         Optional<User> user = userRepository.findById(requestBody.get("userId"));
         Optional<Player> player = playerRepository.findById(requestBody.get("playerId"));
+        Optional<Location> location = locationRepository.findById(1L);
 
         if (!user.isPresent() || !player.isPresent()) {
             // Handle the case where user or player is not found
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User or player not found.");
         }
 
-        Game game = new Game(user.get(), player.get());
+        Game game = new Game(user.get(), player.get(), location.get());
 
         try {
             game = gameRepository.save(game);
