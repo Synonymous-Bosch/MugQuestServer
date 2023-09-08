@@ -21,7 +21,6 @@ public class DialogueOption {
 
     @Column(name="previous_id")
     private Long previousId;
-
     @Column(name="dialogue")
     private String dialogue;
 
@@ -52,8 +51,8 @@ public class DialogueOption {
 
 
     public DialogueOption(Long nextId, Long previousId, String dialogue, String responseText, Location location) {
-        this.previousId = previousId;
         this.nextId = nextId;
+        this.previousId = previousId;
         this.dialogue = dialogue;
         this.responseText = responseText;
         this.location = location;
@@ -61,6 +60,7 @@ public class DialogueOption {
     }
 
     public DialogueOption() {}
+    
 
     public Long getId() {
         return id;
@@ -112,5 +112,13 @@ public class DialogueOption {
 
     public void addPlayer(Player player) {
 
+    }
+
+    public Long getPreviousId() {
+        return previousId;
+    }
+
+    public void setPreviousId(Long previousId) {
+        this.previousId = previousId;
     }
 }
